@@ -11,7 +11,8 @@
 %%======================================================================
 %% STEP 0: Initialize Parameters and Load Data
 %  Here we initialize some parameters used for the exercise.
-
+clear;
+close all;
 % Configuration
 imageDim = 28;
 numClasses = 10;  % Number of classes (MNIST images fall into 10 classes)
@@ -39,7 +40,7 @@ theta = cnnInitParams(imageDim,filterDim,numFilters,poolDim,numClasses);
 %  calculation for your cnnCost.m function.  You may need to add the
 %  appropriate path or copy the file to this directory.
 
-DEBUG=false;  % set this to true to check gradient
+DEBUG=true;  % set this to true to check gradient
 if DEBUG
     % To speed up gradient checking, we will use a reduced network and
     % a debugging data set

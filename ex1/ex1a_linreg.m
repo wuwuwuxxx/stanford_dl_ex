@@ -8,6 +8,9 @@
 % Harrison, D. and Rubinfeld, D.L.
 % ''Hedonic prices and the demand for clean air''
 % J. Environ. Economics & Management, vol.5, 81-102, 1978.
+
+clear;
+close all;
 %
 addpath ../common
 addpath ../common/minFunc_2012/minFunc

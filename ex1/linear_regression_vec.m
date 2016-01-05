@@ -18,3 +18,7 @@ function [f,g] = linear_regression_vec(theta, X,y)
   %        Store the objective function value in 'f', and the gradient in 'g'.
   %
 %%% YOUR CODE HERE %%%
+yHat = X' * theta;
+f = norm(yHat - y', 'fro')^2/2;
+g = X * (yHat - y');
+end

@@ -65,13 +65,15 @@ convDim = imageDim-filterDim+1; % dimension of convolved output
 outputDim = (convDim)/poolDim; % dimension of subsampled output
 
 % convDim x convDim x numFilters x numImages tensor for storing activations
-activations = zeros(convDim,convDim,numFilters,numImages);
+%activations = zeros(convDim,convDim,numFilters,numImages);
+activations = cnnConvolve(filterDim, numFilters, images, Wc, bc);
 
 % outputDim x outputDim x numFilters x numImages tensor for storing
 % subsampled activations
-activationsPooled = zeros(outputDim,outputDim,numFilters,numImages);
+%activationsPooled = zeros(outputDim,outputDim,numFilters,numImages);
 
 %%% YOUR CODE HERE %%%
+activationsPooled = cnnPool(poolDim, activations);
 
 % Reshape activations into 2-d matrix, hiddenSize x numImages,
 % for Softmax layer

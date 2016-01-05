@@ -11,6 +11,8 @@
 %%======================================================================
 %% STEP 0: Initialization and Load Data
 %  Here we initialize some parameters used for the exercise.
+clear;
+close all;
 
 imageDim = 28;         % image dimension
 
@@ -27,7 +29,7 @@ images = loadMNISTImages('../common/train-images-idx3-ubyte');
 images = reshape(images,imageDim,imageDim,numImages);
 
 W = randn(filterDim,filterDim,numFilters);
-b = rand(numFilters);
+b = rand(numFilters, 1);
 
 %%======================================================================
 %% STEP 1: Implement and test convolution

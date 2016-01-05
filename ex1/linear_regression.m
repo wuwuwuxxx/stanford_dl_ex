@@ -22,3 +22,7 @@ function [f,g] = linear_regression(theta, X,y)
   %        computed gradient in 'g'.
   
 %%% YOUR CODE HERE %%%
+yHat = X' * theta;
+f = norm(yHat - y', 'fro')^2/2;
+g = X * (yHat - y');
+end

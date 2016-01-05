@@ -8,6 +8,9 @@ addpath ../common/minFunc_2012/minFunc/compiled
 %      m is the number of examples.
 %      n is the number of pixels in each image.
 % train.y and test.y will contain the corresponding labels (0 to 9).
+clear;
+close all;
+
 binary_digits = false;
 num_classes = 10;
 [train,test] = ex1_load_mnist(binary_digits);
