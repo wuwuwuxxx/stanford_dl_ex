@@ -1,6 +1,10 @@
-addpath ../common
-addpath ../common/minFunc_2012/minFunc
-addpath ../common/minFunc_2012/minFunc/compiled
+clear;
+close all;
+
+
+addpath('../common');
+addpath('../common/minFunc_2012/minFunc');
+addpath('../common/minFunc_2012/minFunc/compiled');
 
 % Load the MNIST data for this exercise.
 % train.X and test.X will contain the training and testing images.
@@ -8,8 +12,7 @@ addpath ../common/minFunc_2012/minFunc/compiled
 %      m is the number of examples.
 %      n is the number of pixels in each image.
 % train.y and test.y will contain the corresponding labels (0 to 9).
-clear;
-close all;
+
 
 binary_digits = false;
 num_classes = 10;
