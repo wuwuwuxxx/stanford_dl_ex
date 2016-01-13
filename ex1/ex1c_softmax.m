@@ -2,9 +2,9 @@ clear;
 close all;
 
 
-addpath('../common');
-addpath('../common/minFunc_2012/minFunc');
-addpath('../common/minFunc_2012/minFunc/compiled');
+addpath('C:\Users\wuwuw\Desktop\stanford_dl_ex\common');
+addpath('C:\Users\wuwuw\Desktop\stanford_dl_ex\common/minFunc_2012/minFunc');
+addpath('C:\Users\wuwuw\Desktop\stanford_dl_ex\common/minFunc_2012/minFunc/compiled');
 
 % Load the MNIST data for this exercise.
 % train.X and test.X will contain the training and testing images.
