@@ -2,9 +2,9 @@ clear;
 close all;
 
 
-addpath('C:\Users\wuwuw\Desktop\stanford_dl_ex\common');
-addpath('C:\Users\wuwuw\Desktop\stanford_dl_ex\common/minFunc_2012/minFunc');
-addpath('C:\Users\wuwuw\Desktop\stanford_dl_ex\common/minFunc_2012/minFunc/compiled');
+addpath('..\common');
+addpath('..\common/minFunc_2012/minFunc');
+addpath('..\common/minFunc_2012/minFunc/compiled');
 
 % Load the MNIST data for this exercise.
 % train.X and test.X will contain the training and testing images.
@@ -41,6 +41,10 @@ theta = rand(n,num_classes-1)*0.001;
 %
 % TODO:  Implement batch softmax regression in the softmax_regression_vec.m
 % file using a vectorized implementation.
+%
+%check gradient
+check_numbers = 10;
+grad_check(@softmax_regression_vec, theta(:), check_numbers, train.X, train.y);
 %
 tic;
 theta(:)=minFunc(@softmax_regression_vec, theta(:), options, train.X, train.y);

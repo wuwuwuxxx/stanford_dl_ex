@@ -27,6 +27,16 @@ function [f,g] = softmax_regression(theta, X,y)
   %        Before returning g, make sure you form it back into a vector with g=g(:);
   %
 %%% YOUR CODE HERE %%%
-  g=g(:); % make gradient a vector for minFunc
+  theta = [theta zeros(n, 1)];
+  z = theta' * X;
+  a = exp(z);
+  p = bsxfun(@rdivide, a, sum(a));
+  groundTruth = full(sparse(y, 1:m, 1));
+  f = groundTruth .* log(p);
+  f = -sum(sum(f));
+  g = groundTruth - p;
+  g = X * g';
+  g = g(:, 1:num_classes-1);
+  g = -g(:); % make gradient a vector for minFunc
 end
 

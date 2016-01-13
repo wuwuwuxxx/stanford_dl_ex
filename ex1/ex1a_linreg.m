@@ -11,6 +11,7 @@
 
 clear;
 close all;
+
 %
 addpath ../common
 addpath ../common/minFunc_2012/minFunc
@@ -44,6 +45,10 @@ theta = rand(n,1);
 %
 % TODO:  Implement the linear regression objective and gradient computations
 % in linear_regression.m
+%
+%check gradient
+check_numbers = 10;
+grad_check(@linear_regression_vec, theta, check_numbers, train.X, train.y);
 %
 tic;
 options = struct('MaxIter', 200);

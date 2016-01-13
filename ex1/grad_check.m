@@ -1,6 +1,6 @@
 function average_error = grad_check(fun, theta0, num_checks, varargin)
 
-  delta=1e-3; 
+  delta=1e-4; 
   sum_error=0;
 
   fprintf(' Iter       i             err');
