@@ -33,9 +33,9 @@ function [f,g] = softmax_regression(theta, X,y)
   p = bsxfun(@rdivide, a, sum(a));
   groundTruth = full(sparse(y, 1:m, 1));
   f = groundTruth .* log(p);
-  f = -sum(sum(f));
+  f = -mean(sum(f));
   g = groundTruth - p;
-  g = X * g';
+  g = X * g' / m;
   g = g(:, 1:num_classes-1);
   g = -g(:); % make gradient a vector for minFunc
 end

@@ -31,7 +31,7 @@ function [t,f_new,g_new,funEvals,H] = WolfeLineSearch(...
 if nargout == 5
     [f_new,g_new,H] = funObj(x + t*d,varargin{:});
 else
-    [f_new,g_new] = funObj(x+t*d,varargin{:});
+    [f_new,g_new] = funObj(x + t*d,varargin{:});
 end
 funEvals = 1;
 gtd_new = g_new'*d;

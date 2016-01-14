@@ -1,6 +1,7 @@
 % runs training procedure for supervised multilayer network
 % softmax output layer with cross entropy loss function
-
+clear;
+close all;
 %% setup environment
 % experiment information
 % a struct containing network layer sizes etc
@@ -32,6 +33,12 @@ ei.lambda = 0;
 % feel free to implement support for only the logistic sigmoid function
 ei.activation_fun = 'logistic';
 
+%% debug
+debug = false;
+if debug
+    ei.layer_sizes = [10, ei.output_dim];
+end
+
 %% setup random initial weights
 stack = initialize_weights(ei);
 params = stack2params(stack);
@@ -42,9 +49,13 @@ options.display = 'iter';
 options.maxFunEvals = 1e6;
 options.Method = 'lbfgs';
 
+%% check gradient
+if debug
+    check_numbers = 30;
+    grad_check(@supervised_dnn_cost, params(:), check_numbers, ei, data_train, labels_train, false);
+end
 %% run training
-[opt_params,opt_value,exitflag,output] = minFunc(@supervised_dnn_cost,...
-    params,options,ei, data_train, labels_train);
+[opt_params,opt_value,exitflag,output] = minFunc(@supervised_dnn_cost, params,options,ei, data_train, labels_train);
 
 %% compute accuracy on the test and train set
 [~, ~, pred] = supervised_dnn_cost( opt_params, ei, data_test, [], true);
