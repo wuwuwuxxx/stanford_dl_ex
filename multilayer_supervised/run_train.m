@@ -28,13 +28,13 @@ ei.output_dim = 10;
 % sizes of all hidden layers and the output layer
 ei.layer_sizes = [256, ei.output_dim];
 % scaling parameter for l2 weight regularization penalty
-ei.lambda = 0;
+ei.lambda = 0.005;
 % which type of activation function to use in hidden layers
 % feel free to implement support for only the logistic sigmoid function
 ei.activation_fun = 'logistic';
 
 %% debug
-debug = false;
+debug = true;
 if debug
     ei.layer_sizes = [10, ei.output_dim];
 end
