@@ -22,7 +22,7 @@ hAct{1} = sigmoid(bsxfun(@plus, stack{1}.W * data , stack{1}.b));
 for j = 2:numHidden
     hAct{j} = sigmoid(bsxfun(@plus, stack{j}.W * hAct{j-1} , stack{j}.b));
 end
-hAct{numHidden+1} = exp(stack{numHidden+1}.W * hAct{numHidden});
+hAct{numHidden+1} = exp(bsxfun(@plus, stack{numHidden+1}.W * hAct{numHidden}, stack{numHidden+1}.b));
 hAct{numHidden+1} = bsxfun(@rdivide, hAct{numHidden+1}, sum(hAct{numHidden+1}));
 %% return here if only predictions desired.
 if po
@@ -35,7 +35,7 @@ end;
 %% compute cost
 %%% YOUR CODE HERE %%%
 groundTruth = full(sparse(labels, 1:size(labels, 1), 1));
-cost = -mean(sum(groundTruth .* log(hAct{numHidden+1})));
+cost = -sum(sum(groundTruth .* log(hAct{numHidden+1})));
 %% compute gradients using backpropagation
 %%% YOUR CODE HERE %%%
 deltaStack = cell(numHidden+1, 1);
@@ -47,11 +47,11 @@ end
 
 % compute delta W and delta b
 M = size(labels, 1);
-gradStack{1}.W = deltaStack{1} * data' / M;
-gradStack{1}.b = mean(deltaStack{1}, 2);
+gradStack{1}.W = deltaStack{1} * data';
+gradStack{1}.b = sum(deltaStack{1}, 2);
 for j = 2:numHidden+1
-    gradStack{j}.W = deltaStack{j} * hAct{j-1}' / M;
-    gradStack{j}.b = mean(deltaStack{j}, 2);
+    gradStack{j}.W = deltaStack{j} * hAct{j-1}';
+    gradStack{j}.b = sum(deltaStack{j}, 2);
 end
 % gradStack{2}.W = deltaStack{2} * hAct{1}' / M;
 % gradStack{2}.b = mean(deltaStack{2}, 2);

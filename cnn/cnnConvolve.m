@@ -40,7 +40,7 @@ for imageNum = 1:numImages
   for filterNum = 1:numFilters
 
     % convolution of image with feature matrix
-    convolvedImage = zeros(convDim, convDim);
+    % convolvedImage = zeros(convDim, convDim);
 
     % Obtain the feature (filterDim x filterDim) needed during the convolution
 
@@ -58,7 +58,7 @@ for imageNum = 1:numImages
     % be sure to do a 'valid' convolution
 
     %%% YOUR CODE HERE %%%
-    convolvedImage = convolvedImage + conv2(im, filter, 'valid');
+    convolvedImage = conv2(im, filter, 'valid');
     
     
     % Add the bias unit

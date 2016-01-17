@@ -34,7 +34,7 @@ ei.lambda = 0.0001; % you can set your own lambda
 ei.activation_fun = 'logistic';
 
 %% debug
-debug = false;
+debug = true;
 if debug
     ei.layer_sizes = [10, ei.output_dim];
 end

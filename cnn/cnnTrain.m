@@ -22,9 +22,9 @@ poolDim = 2;      % Pooling dimension, (should divide imageDim-filterDim+1)
 
 % Load MNIST Train
 addpath ../common/;
-images = loadMNISTImages('../common/train-images-idx3-ubyte');
+images = loadMNISTImages('train-images-idx3-ubyte');
 images = reshape(images,imageDim,imageDim,[]);
-labels = loadMNISTLabels('../common/train-labels-idx1-ubyte');
+labels = loadMNISTLabels('train-labels-idx1-ubyte');
 labels(labels==0) = 10; % Remap 0 to 10
 
 % Initialize Parameters
@@ -40,7 +40,7 @@ theta = cnnInitParams(imageDim,filterDim,numFilters,poolDim,numClasses);
 %  calculation for your cnnCost.m function.  You may need to add the
 %  appropriate path or copy the file to this directory.
 
-DEBUG=true;  % set this to true to check gradient
+DEBUG=false;  % set this to true to check gradient
 if DEBUG
     % To speed up gradient checking, we will use a reduced network and
     % a debugging data set

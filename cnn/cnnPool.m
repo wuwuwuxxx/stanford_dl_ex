@@ -43,4 +43,3 @@ for imageNum=1:numImages
 end
 
 end
-
